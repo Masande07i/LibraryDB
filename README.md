@@ -3,6 +3,7 @@
 ## Project image
 
 <img src="https://socialify.git.ci/Masande07i/LibraryDB/image?language=1&owner=1&name=1&stargazers=1&theme=Light" alt="LibraryDB" width="640" height="320" />
+
 ## Project Description
 
 This project is a Library Management System built using PostgreSQL.
@@ -184,13 +185,6 @@ SELECT * FROM books
 WHERE author_id = 3;
 ```
 
-Using the author's name:
-
-```sql
-SELECT books.*
-FROM books
-JOIN authors ON books.author_id = authors.author_id
-WHERE authors.name = 'F. Scott Fitzgerald';
 ```
 
 ## Get All Available Books
