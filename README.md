@@ -62,7 +62,7 @@ After creating the database, connect to `LibraryDB` before creating the tables.
 
 ## 2. Create Authors Table
 
-```
+```sql
 CREATE TABLE IF NOT EXISTS authors (
     author_id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
