@@ -305,8 +305,10 @@ WHERE published_year = 1869;
 # Running the Project in pgAdmin
 
 ## Step 1: Open pgAdmin
+```
+Open pgAdmin 4 on your computer. in the left-hand Browser menu, double-click Servers and enter your master/admin  password to connect to your PostgreSQL instance. Right-click on Databases(or right-click your PostgreSQL server instance, Create and select Database.) In the dialog box that appears, type Library into Database name field.
 
-Open pgAdmin and connect to your PostgreSQL server.
+Click **OK**
 
 ## Step 2: Create the Database
 
