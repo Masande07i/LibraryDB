@@ -165,13 +165,13 @@ VALUES
 
 ## Get All Books
 
-```
+```sql
 SELECT * FROM books;
 ```
 
 ## Get a Book by Title
 
-```
+```sql
 SELECT * FROM books
 WHERE title = '1984';
 ```
@@ -180,14 +180,14 @@ WHERE title = '1984';
 
 Using the author's ID:
 
-```
+```sql
 SELECT * FROM books
 WHERE author_id = 3;
 ```
 
 ## Get All Available Books
 
-```
+```sql
 SELECT * FROM books
 WHERE available = TRUE;
 ```
@@ -200,14 +200,14 @@ WHERE available = TRUE;
 
 Set the book's availability to `FALSE` using id.
 
-```
+```sql
 UPDATE books
 SET available = FALSE
 WHERE book_id = 1;
 ```
 ## Add a New Genre to an existing book
 
-```
+```sql
 UPDATE books
 SET genres = genres || ARRAY['Novel']
 WHERE book_id = 3;
@@ -217,7 +217,7 @@ WHERE book_id = 3;
 
 For example, add book `3` to patron `2`:
 
-```
+```sql
 UPDATE patrons
 SET borrowed_books = array_append(borrowed_books, 3)
 WHERE patron_id = 2;
@@ -229,7 +229,7 @@ WHERE patron_id = 2;
 
 ## Delete a Book by Title
 
-```
+```sql
 DELETE FROM books
 WHERE title = '1984';
 ```
@@ -240,14 +240,14 @@ Because books reference authors through a foreign key, an author cannot be delet
 
 First delete the author's books:
 
-```
+```sql
 DELETE FROM books
 WHERE author_id = 2;
 ```
 
 Then delete the author:
 
-```
+```sql
 DELETE FROM authors
 WHERE author_id = 2;
 ```
@@ -258,28 +258,28 @@ WHERE author_id = 2;
 
 ## Find Books Published After 1950
 
-```
+```sql
 SELECT * FROM books
 WHERE published_year > 1950;
 ```
 
 ## Find All American Authors
 
-```
+```sql
 SELECT * FROM authors
 WHERE nationality = 'American';
 ```
 
 ## Set All Books as Available
 
-```
+```sql
 UPDATE books
 SET available = TRUE;
 ```
 
 ## Find Available Books Published After 1950
 
-```
+```sql
 SELECT * FROM books
 WHERE available = TRUE
 AND published_year > 1950;
@@ -287,14 +287,14 @@ AND published_year > 1950;
 
 ## Find Authors Whose Names Contain "George"
 
-```
+```sql
 SELECT * FROM authors
 WHERE name LIKE '%George%';
 ```
 
 ## Increment the Published Year 1869 by 1
 
-```
+```sql
 UPDATE books
 SET published_year = published_year + 1
 WHERE published_year = 1869;
