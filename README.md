@@ -24,7 +24,7 @@ The project demonstrates basic and advanced SQL operations including creating ta
 
 Database name:
 
-```text
+```
 LibraryDB
 ```
 
@@ -36,11 +36,11 @@ The database contains three main tables:
 
 The `books` table has a foreign key relationship with the `authors` table.
 
-```text
+```
 Authors
-   |
-   | author_id
-   |
+   
+    author_id
+   
 Books
 ```
 
@@ -52,7 +52,7 @@ Books
 
 Create a database called:
 
-```sql
+```
 CREATE DATABASE LibraryDB;
 ```
 
@@ -62,7 +62,7 @@ After creating the database, connect to `LibraryDB` before creating the tables.
 
 ## 2. Create Authors Table
 
-```sql
+```
 CREATE TABLE IF NOT EXISTS authors (
     author_id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
@@ -145,7 +145,7 @@ VALUES
 ## Insert Patrons
 
 ```sql
-INSERT INTO patrons (patron_id, name, email, borrowed_books)
+INSERT INTO patrons (patrons_id, name, email, borrowed_books)
 VALUES
 (1, 'Alice Johnson', 'alice@example.com', ARRAY[]::INT[]),
 (2, 'Bob Smith', 'bob@example.com', ARRAY[1, 2]),
@@ -165,13 +165,13 @@ VALUES
 
 ## Get All Books
 
-```sql
+```
 SELECT * FROM books;
 ```
 
 ## Get a Book by Title
 
-```sql
+```
 SELECT * FROM books
 WHERE title = '1984';
 ```
@@ -180,16 +180,14 @@ WHERE title = '1984';
 
 Using the author's ID:
 
-```sql
+```
 SELECT * FROM books
 WHERE author_id = 3;
 ```
 
-```
-
 ## Get All Available Books
 
-```sql
+```
 SELECT * FROM books
 WHERE available = TRUE;
 ```
@@ -200,27 +198,16 @@ WHERE available = TRUE;
 
 ## Mark a Book as Borrowed
 
-Set the book's availability to `FALSE`.
+Set the book's availability to `FALSE` using id.
 
-```sql
+```
 UPDATE books
 SET available = FALSE
 WHERE book_id = 1;
 ```
+## Add a New Genre to an existing book
 
-## Return a Book
-
-Set the book's availability back to `TRUE`.
-
-```sql
-UPDATE books
-SET available = TRUE
-WHERE book_id = 1;
 ```
-
-## Add a New Genre
-
-```sql
 UPDATE books
 SET genres = genres || ARRAY['Novel']
 WHERE book_id = 3;
@@ -230,7 +217,7 @@ WHERE book_id = 3;
 
 For example, add book `3` to patron `2`:
 
-```sql
+```
 UPDATE patrons
 SET borrowed_books = array_append(borrowed_books, 3)
 WHERE patron_id = 2;
@@ -242,7 +229,7 @@ WHERE patron_id = 2;
 
 ## Delete a Book by Title
 
-```sql
+```
 DELETE FROM books
 WHERE title = '1984';
 ```
@@ -253,14 +240,14 @@ Because books reference authors through a foreign key, an author cannot be delet
 
 First delete the author's books:
 
-```sql
+```
 DELETE FROM books
 WHERE author_id = 2;
 ```
 
 Then delete the author:
 
-```sql
+```
 DELETE FROM authors
 WHERE author_id = 2;
 ```
@@ -271,28 +258,28 @@ WHERE author_id = 2;
 
 ## Find Books Published After 1950
 
-```sql
+```
 SELECT * FROM books
 WHERE published_year > 1950;
 ```
 
 ## Find All American Authors
 
-```sql
+```
 SELECT * FROM authors
 WHERE nationality = 'American';
 ```
 
 ## Set All Books as Available
 
-```sql
+```
 UPDATE books
 SET available = TRUE;
 ```
 
 ## Find Available Books Published After 1950
 
-```sql
+```
 SELECT * FROM books
 WHERE available = TRUE
 AND published_year > 1950;
@@ -300,14 +287,14 @@ AND published_year > 1950;
 
 ## Find Authors Whose Names Contain "George"
 
-```sql
+```
 SELECT * FROM authors
 WHERE name LIKE '%George%';
 ```
 
 ## Increment the Published Year 1869 by 1
 
-```sql
+```
 UPDATE books
 SET published_year = published_year + 1
 WHERE published_year = 1869;
@@ -325,13 +312,13 @@ Open pgAdmin and connect to your PostgreSQL server.
 
 Right-click **Databases** and select:
 
-```text
+```
 Create → Database
 ```
 
 Name the database:
 
-```text
+```
 LibraryDB
 ```
 
@@ -343,7 +330,7 @@ Select the `LibraryDB` database.
 
 Right-click the database and select:
 
-```text
+```
 Query Tool
 ```
 
@@ -353,13 +340,13 @@ Copy the SQL commands into the Query Tool.
 
 Run the commands using the **Execute** button or press:
 
-```text
+```
 F5
 ```
 
 Make sure you create the tables in this order:
 
-```text
+```
 1. authors
 2. books
 3. patrons
@@ -371,7 +358,7 @@ This is important because `books.author_id` references `authors.author_id`.
 
 In the pgAdmin browser, expand:
 
-```text
+```
 LibraryDB
     → Schemas
         → public
@@ -380,7 +367,7 @@ LibraryDB
 
 You should see:
 
-```text
+```
 authors
 books
 patrons
@@ -388,13 +375,15 @@ patrons
 
 You can right-click a table and select:
 
-```text
+```
 View/Edit Data → All Rows
 ```
 
 to view the records.
 
 ---
+
+
 
 
 
